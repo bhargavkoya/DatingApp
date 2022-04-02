@@ -169,3 +169,10 @@ C:\Users\bhargava.koya\Desktop\DatingApp\API\obj\Debug\net5.0\API.dll
 C:\Users\bhargava.koya\Desktop\DatingApp\API\obj\Debug\net5.0\ref\API.dll
 C:\Users\bhargava.koya\Desktop\DatingApp\API\obj\Debug\net5.0\API.pdb
 C:\Users\bhargava.koya\Desktop\DatingApp\API\obj\Debug\net5.0\API.genruntimeconfig.cache
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
