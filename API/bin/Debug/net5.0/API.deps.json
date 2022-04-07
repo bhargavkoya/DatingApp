@@ -38,6 +38,7 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "5.0.15",
           "Swashbuckle.AspNetCore": "5.6.3",
           "System.IdentityModel.Tokens.Jwt": "6.16.0",
+          "bootstrap": "5.1.3",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -327,6 +328,7 @@
           "API.dll": {}
         }
       },
+      "bootstrap/5.1.3": {},
       "Humanizer.Core/2.8.26": {
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {
@@ -2491,6 +2493,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "bootstrap/5.1.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-voh0PaptI44WOkOeMmzvUE4348M1QerNVYR8gNOX/PXLygvZjM019oIn4yU3uhgRjuriulfUjb7x/Yv4/YCqFw==",
+      "path": "bootstrap/5.1.3",
+      "hashPath": "bootstrap.5.1.3.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",
