@@ -176,3 +176,10 @@ C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\System.IdentityMod
 C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Data\UserSeedData.json
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
