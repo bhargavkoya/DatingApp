@@ -35,7 +35,10 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationServices(_config);
-
+            services.AddMvc(options =>
+                        {
+                            options.SuppressAsyncSuffixInActionNames = false;
+                        });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

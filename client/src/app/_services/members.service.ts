@@ -25,6 +25,10 @@ export class MembersService {
 
   }
 
+  setMainPhoto(photoId: number) {
+    return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
+  }
+
   getMember(username: string) {
     const member = this.members.find(x => x.username === username);
     if (member !== undefined) return of(member);
@@ -40,5 +44,9 @@ export class MembersService {
       })
     )
 
+  }
+
+  deletePhoto(photoId:number){
+    return this.http.delete(this.baseUrl+'users/delete-photo/'+photoId);
   }
 }
