@@ -31,6 +31,7 @@ namespace API.Controllers
             
         }
 
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
         {
@@ -49,6 +50,7 @@ namespace API.Controllers
 
         }
 
+        
         [HttpGet("{username}")]
         [ActionName(nameof(GetUser))]
        public async Task<ActionResult<MemberDto>> GetUser(string username)

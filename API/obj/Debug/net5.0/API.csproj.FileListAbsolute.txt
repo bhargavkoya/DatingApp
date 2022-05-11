@@ -185,3 +185,4 @@ C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.Extensio
 C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\CloudinaryDotNet.dll
 C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
