@@ -4,6 +4,7 @@ import { ReplaySubject } from 'rxjs';
 import {map} from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from '../_models/user';
+import { MembersService } from './members.service';
 import { PresenceService } from './presence.service';
 
 
@@ -56,6 +57,7 @@ export class AccountService {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
     this.presence.stopHubConnection();
+    //this.memberService.resetUserParams();
   }
 
   getDecodedToken(token) {

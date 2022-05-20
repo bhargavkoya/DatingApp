@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, take } from 'rxjs';
 import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
@@ -27,7 +27,7 @@ export class MemberListComponent implements OnInit {
     this.userParams = this.memberService.getUserParams();
 
    }
-
+  
   ngOnInit(): void {
     this.loadMembers();
 

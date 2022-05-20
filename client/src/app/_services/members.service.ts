@@ -38,6 +38,7 @@ export class MembersService {
   
   resetUserParams() {
     this.userParams = new UserParams(this.user);
+    //this.getMembers(this.userParams);
     return this.userParams;
   }
 

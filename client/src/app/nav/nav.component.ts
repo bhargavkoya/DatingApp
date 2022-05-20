@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
+import { MembersService } from '../_services/members.service';
 
 @Component({
   selector: 'app-nav',
@@ -40,6 +41,7 @@ export class NavComponent implements OnInit {
   logout(){
     //this.loggedIn=false;
     this.router.navigateByUrl("/");
+    
     this.accountService.logout();
     
   }
