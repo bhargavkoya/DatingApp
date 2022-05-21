@@ -34,7 +34,8 @@ namespace API.Data
 
             foreach (var user in users)
             {
-                
+                user.Photos.First().IsApproved = true;
+
 
                 user.UserName = user.UserName.ToLower();
                 
