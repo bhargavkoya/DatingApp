@@ -186,3 +186,5 @@ C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\System.Runtime.Com
 C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\CloudinaryDotNet.dll
 C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Npgsql.dll
+C:\Users\bhargava.koya\Desktop\DatingApp\API\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

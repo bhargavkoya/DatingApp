@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DYeZDSmTtXTRZeobpwjgb4N3XZy8sLL+I4CaIz5Y+Gaz3Ua5eBSjgjC6+sJ/I/2DTUJoGsx6JWWC3mz9DDQPQA==",
+  "dgSpecHash": "/BM7NT4AbpqQmTPd4k5E9GOlNRelixWL0/wd/4fLITDC8tO28+uxnLE5zHrDQHlHpsXL9NB6XtJwcb9P575mQA==",
   "success": true,
   "projectFilePath": "C:\\Users\\bhargava.koya\\Desktop\\DatingApp\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -43,6 +43,8 @@
     "C:\\Users\\bhargava.koya\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.16.0\\microsoft.identitymodel.tokens.6.16.0.nupkg.sha512",
     "C:\\Users\\bhargava.koya\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\bhargava.koya\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
+    "C:\\Users\\bhargava.koya\\.nuget\\packages\\npgsql\\5.0.0\\npgsql.5.0.0.nupkg.sha512",
+    "C:\\Users\\bhargava.koya\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\5.0.0\\npgsql.entityframeworkcore.postgresql.5.0.0.nupkg.sha512",
     "C:\\Users\\bhargava.koya\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.4\\sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\bhargava.koya\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\bhargava.koya\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",
