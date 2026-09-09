@@ -1,0 +1,26 @@
+# Local PostgreSQL for development.
+#   docker compose up -d db
+# Matches API/appsettings.Development.json:
+#   Server=localhost; Port=5432; User Id=appuser; Password=Pa$$w0rd; Database=datingapp
+# NOTE: Compose collapses "$$" to a literal "$", so four "$" below produce the
+# real password "Pa$$w0rd" (two dollar signs).
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: datingapp-db
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: "Pa$$$$w0rd"
+      POSTGRES_DB: datingapp
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appuser -d datingapp"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  dbdata:
