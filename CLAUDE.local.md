@@ -37,9 +37,14 @@ Related docs:
 
 ## 2. Branch & PR workflow
 
-Remote: `origin` → `https://github.com/bhargavkoya/DatingApp`. `gh` CLI is **not installed**
-on this machine, so PRs are opened on github.com by the user (or install `gh` with
-`winget install --id GitHub.cli` and Claude can open/manage them).
+Remote: `origin` → `https://github.com/bhargavkoya/DatingApp`. `gh` CLI **v2.100.0 is
+installed** (`C:\Program Files\GitHub CLI\gh.exe`) and authenticated as `bhargavkoya` (token
+reused from Git Credential Manager, `repo` scope). Claude opens each stage PR with
+`gh pr create`.
+
+> Operational note: in a bash shell spawned before the install, `gh` may not be on `PATH` —
+> prefix with `export PATH="$PATH:/c/Program Files/GitHub CLI"` or call the full path. New
+> sessions pick it up automatically.
 
 ### Branch naming
 | Kind | Pattern | Example |
@@ -96,7 +101,7 @@ Legend: ☐ not started · ▶ in progress · 🅰 in agent review · 🅱 in us
 
 | # | Stage | Branch | Plan ref | Status | Gate A | Gate B | Tag | Notes |
 |---|---|---|---|---|---|---|---|---|
-| 0 | Migration setup (this): docs, process, `.gitignore`, compose | `chore/migration-setup` | — | ▶ | ☐ | ☐ | — | Also untracks `API/bin`+`API/obj` (D-P3). |
+| 0 | Migration setup (this): docs, process, `.gitignore`, compose | `chore/migration-setup` | — | 🅱 | n/a (docs-only, waived) | [PR #1](https://github.com/bhargavkoya/DatingApp/pull/1) | — | Also untracks `API/bin`+`API/obj` (D-P3). Gate A waived by user for stage 0. |
 | 1 | Backend .NET 5 → .NET 10 | `migrate/backend-net10` | Plan §3–§4 | ☐ | ☐ | ☐ | — | Gotchas G1–G12. Regenerate EF migration (D-B5). Blocks nothing on FE. |
 | 2 | Angular baseline on Node 22 + latest 13.x | `migrate/frontend-ng13-baseline` | Plan §5 | ☐ | ☐ | ☐ | — | Green `ng build`/`ng serve` before any hop. |
 | 3 | Angular 14 | `migrate/frontend-ng14` | Plan §9 | ☐ | ☐ | ☐ | — | Typed-forms schematic. |
