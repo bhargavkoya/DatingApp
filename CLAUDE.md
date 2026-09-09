@@ -7,10 +7,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 A staged migration is in progress: **.NET 5 → .NET 10** and **Angular 13 → Angular 21**.
 Before making changes:
 
-- **`CLAUDE.local.md`** — the working agreement, branch/PR workflow, review gates, stage
-  status board, and the decision log. Update it in the same commit as any decision or stage
-  change. **Rule: no coding-standards refactors during the migration** — only changes required
-  to advance a version or keep behaviour identical. Standards pass happens after.
+- **`CLAUDE.local.md`** (local-only, git-ignored — may be absent on a fresh clone) — the
+  working agreement, branch/PR workflow, review gates, stage status board, and the decision
+  log. Keep it current as decisions and stages change. **Rule: no coding-standards refactors
+  during the migration** — only changes required to advance a version or keep behaviour
+  identical. Standards pass happens after.
 - **`MIGRATION_PLAN.md`** — the full step-by-step plan (backend gotchas G1–G12; the Angular
   major-by-major ladder; local run + smoke-test checklist).
 - **`docs/`** — codebase reference. `docs/08-invariants-and-contracts.md` is the "do not

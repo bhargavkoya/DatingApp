@@ -2,6 +2,9 @@
 API/appsettings.json
 API/appsettings.*.local.json
 
+# ---- Claude Code personal working notes (never committed) ----
+CLAUDE.local.md
+
 # ---- .NET build output ----
 [Bb]in/
 [Oo]bj/
