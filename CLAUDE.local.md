@@ -97,7 +97,7 @@ Legend: ☐ not started · ▶ in progress · 🅰 in agent review · 🅱 in us
 | # | Stage | Branch | Plan ref | Status | Gate A | Gate B | Tag | Notes |
 |---|---|---|---|---|---|---|---|---|
 | 0 | Migration setup (this): docs, process, `.gitignore`, compose | `chore/migration-setup` | — | ▶ | ☐ | ☐ | — | Also untracks `API/bin`+`API/obj` (D-P3). |
-| 1 | Backend .NET 5 → .NET 10 | `migrate/backend-net10` | Plan §3–§4 | ☐ | ☐ | ☐ | — | Gotchas G1–G12. Blocks nothing on FE. |
+| 1 | Backend .NET 5 → .NET 10 | `migrate/backend-net10` | Plan §3–§4 | ☐ | ☐ | ☐ | — | Gotchas G1–G12. Regenerate EF migration (D-B5). Blocks nothing on FE. |
 | 2 | Angular baseline on Node 22 + latest 13.x | `migrate/frontend-ng13-baseline` | Plan §5 | ☐ | ☐ | ☐ | — | Green `ng build`/`ng serve` before any hop. |
 | 3 | Angular 14 | `migrate/frontend-ng14` | Plan §9 | ☐ | ☐ | ☐ | — | Typed-forms schematic. |
 | 4 | Angular 15 (+ Bootstrap 4→5, functional guards, `ng-gallery`) | `migrate/frontend-ng15` | Plan §6.1, §7, §9, §11 | ☐ | ☐ | ☐ | — | Biggest FE content change. |
@@ -178,11 +178,17 @@ Area codes: `P` process, `B` backend, `F` frontend.
 - **Status:** ACCEPTED for stage 1. Going UTC-native is a post-migration item
   (`MIGRATION_PLAN.md` §14).
 
-### D-B5 — 2026-09-10 — Keep the existing EF migration; regenerate only if local data is disposable
-- **Why:** the single 2022 Postgres migration still applies under EF 10. Regenerating is only
-  worth it for a clean snapshot on a throwaway DB.
-- **Status:** ACCEPTED (keep). Decide per-developer at stage 1 whether the local DB is
-  disposable.
+### D-B5 — 2026-09-10 — Regenerate the EF migration from scratch during stage 1
+- **Why:** user confirmed local Postgres data is disposable and every environment is
+  re-seeded at startup (`Seed.SeedUsers`), so there is no data to preserve. A single fresh
+  migration authored under EF 10 / Npgsql 10 gives a clean snapshot with no historical
+  baggage from the 2022 EF-5 migration.
+- **Action (stage 1):** `docker compose down -v` (drop the volume) → delete
+  `API/Data/Migrations/*` → `dotnet ef migrations add InitialCreate` → run the app (auto
+  `MigrateAsync` + seed). Verify column types with the Npgsql legacy switch on (D-B4).
+- **Status:** ACCEPTED (regenerate). Supersedes the earlier "keep" lean.
+- **Note:** this only applies to local/dev. If a real deployed DB with real user data ever
+  exists, revert to add-migration-on-change.
 
 ### D-B6 — 2026-09-10 — Swagger: upgrade Swashbuckle to 9.x (don't switch to Scalar during migration)
 - **Why:** the UI is currently commented out; a swap is scope creep. Upgrading the package
@@ -227,21 +233,26 @@ Area codes: `P` process, `B` backend, `F` frontend.
 
 ## 6. Open questions / parking lot
 
-- **Q1:** Install `gh` CLI so Claude can open/label/merge PRs directly? (Currently: user opens
-  PRs on github.com.)
-- **Q2:** Is the local Postgres data disposable? (Decides D-B5 regenerate-vs-keep at stage 1.)
+- ~~**Q1:** Install `gh` CLI…~~ **RESOLVED 2026-09-10:** user wants PRs opened automatically →
+  `gh` CLI to be installed + authenticated; Claude opens each stage PR with `gh pr create`.
+- ~~**Q2:** Is the local Postgres data disposable?~~ **RESOLVED 2026-09-10:** yes, disposable,
+  re-seeded at startup → D-B5 = regenerate migrations.
 - **Q3:** Final Angular target — commit to v21, or lock to v20 if v21 lib support is thin when
-  we get there? (Decide at stage 9.)
-- **Q4:** Node upgrade method on this machine — `nvm-windows`, `winget`, or installer? (Need
-  Node 22 LTS before stage 2.)
+  we get there? (User: "ask me when it is needed" — decide at stage 9.)
+- **Q4:** Node upgrade method — user said "ok" to proceeding; **recommend `nvm-windows`**
+  (per-project Node switching, keeps the machine's other projects safe). Confirm + run before
+  stage 2.
 - **Q5:** Does anything in the Heroku/CI pipeline read committed `API/wwwroot` or `API/bin`?
-  (Affects D-P3; nothing found in-repo.)
+  (Affects D-P3; nothing found in-repo. Ask if a deploy breaks.)
 
 ---
 
 ## 7. Session log (running)
 
-- **2026-09-10** — Created `chore/migration-setup`. Added `docs/` (8 files), this file,
+- **2026-09-10** — Created `chore/migration-setup`. Added `docs/` (9 files), this file,
   `docker-compose.yml`, rewrote `.gitignore`, untracked `API/bin`+`API/obj`. Seeded decision
-  log D-P1…D-F6. Rewrote `MIGRATION_PLAN.md` for the Angular-stays approach. Next: push branch,
-  run Gate A on the setup PR (or skip to stage 1 if user waives review for docs-only).
+  log D-P1…D-F6. Rewrote `MIGRATION_PLAN.md` for the Angular-stays approach. Pushed branch.
+- **2026-09-10** — User answers: (1) open PRs automatically → install+auth `gh`; (2) migrations
+  = regenerate (D-B5 updated); (3) Angular final target deferred to stage 9; (4) Node method
+  ok'd, recommend nvm-windows. Q1/Q2 resolved. Next: install `gh`, open the setup PR, then
+  start stage 1 (backend) with the full two-gate review.

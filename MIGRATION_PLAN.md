@@ -224,10 +224,18 @@ with `IgnoreQueryFilters()` in `UserRepository`. `Message → Sender/Recipient`
 `[HttpPost("add-photo", Name = "GetUser")]` puts the route name on the POST while the GET has
 `[ActionName(nameof(GetUser))]`. Move `Name = "GetUser"` to `[HttpGet("{username}")]`.
 
-### G9 — Migrations (D8/D-data)
-Real data: keep `API/Data/Migrations/*`; add a migration only if the model changes.
-Disposable local data: `rm API/Data/Migrations/*`, `docker compose down -v`,
-`dotnet ef migrations add InitialCreate`, run.
+### G9 — Migrations: regenerate from scratch (decided — `CLAUDE.local.md` D-B5)
+Local data is disposable and every environment re-seeds at startup, so drop the 2022 EF-5
+migration and author one fresh under EF 10 / Npgsql 10:
+```
+docker compose down -v            # drop the Postgres volume
+rm -rf API/Data/Migrations        # delete PostgresInitial + snapshot
+cd API && dotnet ef migrations add InitialCreate
+dotnet run                        # startup MigrateAsync applies it, then Seed.SeedUsers
+```
+Then confirm column types are as expected with the Npgsql legacy switch on (G2): `Created` /
+`LastActive` / `DateOfBirth` / `MessageSent` land as `timestamp without time zone`.
+Do **not** do this against any real deployed DB with real user data — there is none today.
 
 ### G10 — `System.Text.Json` options frozen after first use (.NET 8+)
 `HttpExtensions` / `ExceptionMiddleware` `new` an options object per call — safe, just
@@ -242,14 +250,17 @@ Free dynos gone (Nov 2022); .NET buildpack is community. Not a local blocker. Th
 `net10.0` defaults to C# 14 (was 9). No breaking changes here.
 
 ### Backend step sequence
-1. `docker compose up -d db`; set strong `TokenKey`.
-2. `git switch -c migrate/dotnet-10`.
-3. Edit `API.csproj` (§3).
-4. New `Program.cs` (G3); delete `Startup.cs`, `WeatherForecast*` (G4).
+1. `git switch main && git pull && git switch -c migrate/backend-net10`.
+2. `docker compose down -v && docker compose up -d db`; set strong 64+ char `TokenKey` in
+   `API/appsettings.Development.json`.
+3. Edit `API.csproj` (§3): TFM `net10.0`, bump/remove packages, add explicit `AutoMapper` 14.
+4. New top-level `Program.cs` (G3) incl. the Npgsql legacy switch (G2); delete `Startup.cs`,
+   `WeatherForecastController.cs`, `WeatherForecast.cs` (G4).
 5. `Headers.Append` (G5); AutoMapper `using` check (G6); optional G8.
-6. `dotnet restore && dotnet build`; clear warnings/errors.
-7. Migrations (G9); `dotnet ef database update`.
-8. `dotnet run`; smoke‑test via Swagger/curl: register, login, `GET /api/users`,
+6. `dotnet restore && dotnet build`; clear errors/analyzer warnings.
+7. Regenerate migrations (G9): delete `API/Data/Migrations/*`, `dotnet ef migrations add
+   InitialCreate`.
+8. `dotnet run` (startup auto-migrates + seeds); smoke‑test via Swagger/curl: register, login, `GET /api/users`,
    `POST /api/likes/{username}`, `GET /api/messages?Container=Inbox`, hub connect
    `/hubs/presence?access_token=…`.
 9. Update `.vscode/launch.json` `program` path `…/net5.0/…` → `…/net10.0/…`.
