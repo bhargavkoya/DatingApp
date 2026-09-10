@@ -6,7 +6,6 @@ import { RegisterComponent } from '../register/register.component';
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
-    standalone: true,
     imports: [RegisterComponent]
 })
 export class HomeComponent implements OnInit {

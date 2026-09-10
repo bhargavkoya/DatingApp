@@ -14,7 +14,6 @@ import { AsyncPipe, TitleCasePipe } from '@angular/common';
     selector: 'app-nav',
     templateUrl: './nav.component.html',
     styleUrls: ['./nav.component.css'],
-    standalone: true,
     imports: [RouterLink, RouterLinkActive, HasRoleDirective, BsDropdownModule, FormsModule, AsyncPipe, TitleCasePipe]
 })
 export class NavComponent implements OnInit {

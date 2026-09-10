@@ -7,7 +7,6 @@ import { BsDatepickerConfig, BsDatepickerModule } from 'ngx-bootstrap/datepicker
     selector: 'app-date-input',
     templateUrl: './date-input.component.html',
     styleUrls: ['./date-input.component.css'],
-    standalone: true,
     imports: [BsDatepickerModule, FormsModule, ReactiveFormsModule]
 })
 export class DateInputComponent implements ControlValueAccessor{

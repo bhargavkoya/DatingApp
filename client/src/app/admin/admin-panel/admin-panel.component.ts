@@ -8,7 +8,6 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     selector: 'app-admin-panel',
     templateUrl: './admin-panel.component.html',
     styleUrls: ['./admin-panel.component.css'],
-    standalone: true,
     imports: [TabsModule, HasRoleDirective, UserManagementComponent, PhotoManagementComponent]
 })
 export class AdminPanelComponent implements OnInit {

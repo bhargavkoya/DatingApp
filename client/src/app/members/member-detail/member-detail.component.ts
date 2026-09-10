@@ -17,7 +17,6 @@ import { AsyncPipe, DatePipe } from '@angular/common';
     selector: 'app-member-detail',
     templateUrl: './member-detail.component.html',
     styleUrls: ['./member-detail.component.css'],
-    standalone: true,
     imports: [TabsModule, MemberMessagesComponent, AsyncPipe, DatePipe, TimeagoPipe]
 })
 export class MemberDetailComponent implements OnInit,OnDestroy {

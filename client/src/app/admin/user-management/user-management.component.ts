@@ -9,7 +9,6 @@ import { AdminService } from 'src/app/_services/admin.service';
     selector: 'app-user-management',
     templateUrl: './user-management.component.html',
     styleUrls: ['./user-management.component.css'],
-    standalone: true,
     imports: []
 })
 export class UserManagementComponent implements OnInit {

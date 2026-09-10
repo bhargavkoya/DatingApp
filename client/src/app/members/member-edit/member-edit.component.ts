@@ -15,7 +15,6 @@ import { DatePipe } from '@angular/common';
     selector: 'app-member-edit',
     templateUrl: './member-edit.component.html',
     styleUrls: ['./member-edit.component.css'],
-    standalone: true,
     imports: [TabsModule, FormsModule, PhotoEditorComponent, DatePipe, TimeagoPipe]
 })
 export class MemberEditComponent implements OnInit {

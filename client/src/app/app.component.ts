@@ -10,7 +10,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    standalone: true,
     imports: [NgxSpinnerModule, NavComponent, RouterOutlet]
 })
 export class AppComponent implements OnInit {

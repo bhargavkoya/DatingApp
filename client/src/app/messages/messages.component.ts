@@ -14,7 +14,6 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     selector: 'app-messages',
     templateUrl: './messages.component.html',
     styleUrls: ['./messages.component.css'],
-    standalone: true,
     imports: [ButtonsModule, FormsModule, RouterLink, PaginationModule, TitleCasePipe, TimeagoPipe]
 })
 export class MessagesComponent implements OnInit {
