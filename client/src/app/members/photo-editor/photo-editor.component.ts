@@ -100,6 +100,10 @@ export class PhotoEditorComponent implements OnInit {
           }
         }
       },
+      error: () => {
+        this.uploading = false;
+        this.uploadProgress = 0;
+      },
       complete: () => {
         this.uploading = false;
         this.uploadProgress = 0;
