@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { NgIf, NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'app-test-errors',
     templateUrl: './test-errors.component.html',
     styleUrls: ['./test-errors.component.css'],
     standalone: true,
-    imports: [NgIf, NgFor]
+    imports: []
 })
 export class TestErrorsComponent implements OnInit {
 

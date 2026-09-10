@@ -6,7 +6,7 @@ import { MessageService } from '../_services/message.service';
 import { TimeagoPipe } from '../_pipes/timeago.pipe';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { RouterLink } from '@angular/router';
-import { NgIf, NgFor, TitleCasePipe } from '@angular/common';
+import { TitleCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
@@ -15,7 +15,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     templateUrl: './messages.component.html',
     styleUrls: ['./messages.component.css'],
     standalone: true,
-    imports: [ButtonsModule, FormsModule, NgIf, NgFor, RouterLink, PaginationModule, TitleCasePipe, TimeagoPipe]
+    imports: [ButtonsModule, FormsModule, RouterLink, PaginationModule, TitleCasePipe, TimeagoPipe]
 })
 export class MessagesComponent implements OnInit {
 

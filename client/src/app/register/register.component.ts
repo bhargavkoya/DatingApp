@@ -3,7 +3,7 @@ import { AbstractControl, UntypedFormBuilder, FormControl, UntypedFormGroup, Val
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
-import { NgIf, NgFor, JsonPipe } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { DateInputComponent } from '../_forms/date-input/date-input.component';
 import { TextInputComponent } from '../_forms/text-input/text-input.component';
 
@@ -12,7 +12,7 @@ import { TextInputComponent } from '../_forms/text-input/text-input.component';
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css'],
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, TextInputComponent, DateInputComponent, NgIf, NgFor, JsonPipe]
+    imports: [FormsModule, ReactiveFormsModule, TextInputComponent, DateInputComponent, JsonPipe]
 })
 export class RegisterComponent implements OnInit {
   

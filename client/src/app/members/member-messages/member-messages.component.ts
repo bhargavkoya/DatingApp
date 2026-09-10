@@ -3,7 +3,7 @@ import { NgForm, FormsModule } from '@angular/forms';
 import { Message } from 'src/app/_models/Message';
 import { MessageService } from 'src/app/_services/message.service';
 import { TimeagoPipe } from '../../_pipes/timeago.pipe';
-import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -11,7 +11,7 @@ import { NgIf, NgFor, AsyncPipe } from '@angular/common';
     templateUrl: './member-messages.component.html',
     styleUrls: ['./member-messages.component.css'],
     standalone: true,
-    imports: [NgIf, NgFor, FormsModule, AsyncPipe, TimeagoPipe]
+    imports: [FormsModule, AsyncPipe, TimeagoPipe]
 })
 export class MemberMessagesComponent implements OnInit {
 

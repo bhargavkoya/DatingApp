@@ -11,14 +11,14 @@ import { MessageService } from 'src/app/_services/message.service';
 import { PresenceService } from 'src/app/_services/presence.service';
 import { TimeagoPipe } from '../../_pipes/timeago.pipe';
 import { MemberMessagesComponent } from '../member-messages/member-messages.component';
-import { NgIf, NgFor, AsyncPipe, DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-member-detail',
     templateUrl: './member-detail.component.html',
     styleUrls: ['./member-detail.component.css'],
     standalone: true,
-    imports: [NgIf, TabsModule, NgFor, MemberMessagesComponent, AsyncPipe, DatePipe, TimeagoPipe]
+    imports: [TabsModule, MemberMessagesComponent, AsyncPipe, DatePipe, TimeagoPipe]
 })
 export class MemberDetailComponent implements OnInit,OnDestroy {
   @ViewChild('memberTabs',{static:true}) memberTabs: TabsetComponent;

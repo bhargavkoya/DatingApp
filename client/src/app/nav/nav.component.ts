@@ -8,14 +8,14 @@ import { MembersService } from '../_services/members.service';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HasRoleDirective } from '../_directives/has-role.directive';
-import { NgIf, AsyncPipe, TitleCasePipe } from '@angular/common';
+import { AsyncPipe, TitleCasePipe } from '@angular/common';
 
 @Component({
     selector: 'app-nav',
     templateUrl: './nav.component.html',
     styleUrls: ['./nav.component.css'],
     standalone: true,
-    imports: [RouterLink, RouterLinkActive, NgIf, HasRoleDirective, BsDropdownModule, FormsModule, AsyncPipe, TitleCasePipe]
+    imports: [RouterLink, RouterLinkActive, HasRoleDirective, BsDropdownModule, FormsModule, AsyncPipe, TitleCasePipe]
 })
 export class NavComponent implements OnInit {
 

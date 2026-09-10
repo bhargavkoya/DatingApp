@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { User } from 'src/app/_models/user';
-import { NgFor } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
     templateUrl: './roles-modal.component.html',
     styleUrls: ['./roles-modal.component.css'],
     standalone: true,
-    imports: [FormsModule, NgFor]
+    imports: [FormsModule]
 })
 export class RolesModalComponent implements OnInit {
 

@@ -9,14 +9,14 @@ import { MembersService } from 'src/app/_services/members.service';
 import { TimeagoPipe } from '../../_pipes/timeago.pipe';
 import { PhotoEditorComponent } from '../photo-editor/photo-editor.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { NgIf, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-member-edit',
     templateUrl: './member-edit.component.html',
     styleUrls: ['./member-edit.component.css'],
     standalone: true,
-    imports: [NgIf, TabsModule, FormsModule, PhotoEditorComponent, DatePipe, TimeagoPipe]
+    imports: [TabsModule, FormsModule, PhotoEditorComponent, DatePipe, TimeagoPipe]
 })
 export class MemberEditComponent implements OnInit {
   member:Member;

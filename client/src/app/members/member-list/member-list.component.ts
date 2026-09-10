@@ -9,7 +9,7 @@ import { MembersService } from 'src/app/_services/members.service';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { MemberCardComponent } from '../member-card/member-card.component';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
-import { NgFor, NgIf } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
     templateUrl: './member-list.component.html',
     styleUrls: ['./member-list.component.css'],
     standalone: true,
-    imports: [FormsModule, NgFor, ButtonsModule, MemberCardComponent, NgIf, PaginationModule]
+    imports: [FormsModule, ButtonsModule, MemberCardComponent, PaginationModule]
 })
 export class MemberListComponent implements OnInit {
   //members$: Observable<Member[]>;

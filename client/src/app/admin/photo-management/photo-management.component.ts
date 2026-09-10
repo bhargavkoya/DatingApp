@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Photo } from 'src/app/_models/Photo';
 import { AdminService } from 'src/app/_services/admin.service';
-import { NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'app-photo-management',
     templateUrl: './photo-management.component.html',
     styleUrls: ['./photo-management.component.css'],
     standalone: true,
-    imports: [NgFor]
+    imports: []
 })
 export class PhotoManagementComponent implements OnInit {
 
