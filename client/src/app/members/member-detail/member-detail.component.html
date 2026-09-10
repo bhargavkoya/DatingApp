@@ -46,9 +46,15 @@
                 <p>{{member.interests}}</p>
             </tab>
             <tab heading='Photos'(selectTab)="onTabActivated($event)">
-                <ngx-gallery [options]="galleryOptions" [images]="galleryImages" 
-                style="display: inline-block; margin-bottom: 20px;"></ngx-gallery>
-
+                <div class="member-photos">
+                    <img [src]="activePhotoUrl || './assets/user.png'" alt="{{member.knownAs}}"
+                        class="member-photos-main">
+                    <div class="member-photos-thumbs" *ngIf="member.photos?.length">
+                        <img *ngFor="let photo of member.photos" [src]="photo.url"
+                            [class.active]="photo.url === activePhotoUrl"
+                            (click)="selectPhoto(photo.url)" alt="{{member.knownAs}}">
+                    </div>
+                </div>
             </tab>
             <tab heading='Messages'(selectTab)="onTabActivated($event)">
                 <app-member-messages  [username]="member.username"></app-member-messages>

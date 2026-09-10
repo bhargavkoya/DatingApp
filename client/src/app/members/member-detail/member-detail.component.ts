@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 import { take } from 'rxjs';
 import { Member } from 'src/app/_models/member';
@@ -19,8 +18,7 @@ import { PresenceService } from 'src/app/_services/presence.service';
 export class MemberDetailComponent implements OnInit,OnDestroy {
   @ViewChild('memberTabs',{static:true}) memberTabs: TabsetComponent;
   member:Member;
-  galleryOptions: NgxGalleryOptions[];
-  galleryImages: NgxGalleryImage[];
+  activePhotoUrl: string;
   activeTab:TabDirective;
   messages:Message[]=[];
   user:User;
@@ -35,6 +33,7 @@ export class MemberDetailComponent implements OnInit,OnDestroy {
 
     this.route.data.subscribe(data => {
       this.member = data.member;
+      this.activePhotoUrl = this.member.photoUrl || this.member.photos?.[0]?.url;
     })
 
     this.route.queryParams.subscribe(params => {
@@ -42,37 +41,14 @@ export class MemberDetailComponent implements OnInit,OnDestroy {
     })
 
 
-
-    this.galleryOptions = [
-      {
-        width: '500px',
-        height: '500px',
-        imagePercent: 100,
-        thumbnailsColumns: 4,
-        imageAnimation: NgxGalleryAnimation.Slide,
-        preview: false
-      }
-    ]
-
-    this.galleryImages = this.getImages();
-
-
   }
 
 
-  getImages(): NgxGalleryImage[] {
-    const imageUrls = [];
-    for (const photo of this.member.photos) {
-      imageUrls.push({
-        small: photo?.url,
-        medium: photo?.url,
-        big: photo?.url
-      })
-    }
-    return imageUrls;
+  selectPhoto(url: string) {
+    this.activePhotoUrl = url;
   }
 
- 
+
   loadMessages() {
     this.messageService.getMessageThread(this.member.username).subscribe(messages => {
       this.messages = messages;
