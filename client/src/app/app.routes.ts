@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
@@ -15,7 +14,7 @@ import { authGuard } from './_guards/auth.guard';
 import { preventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { memberDetailedResolver } from './_resolvers/member-detailed.resolver';
 
-const routes: Routes = [
+export const routes: Routes = [
   {path:'',component:HomeComponent},
   {
     path: '',
@@ -36,9 +35,3 @@ const routes: Routes = [
 
   {path:'**',component:NotFoundComponent,pathMatch:'full'},
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

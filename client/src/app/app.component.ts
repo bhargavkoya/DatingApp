@@ -4,10 +4,14 @@ import { NavComponent } from './nav/nav.component';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 import { PresenceService } from './_services/presence.service';
+import { RouterOutlet } from '@angular/router';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    standalone: true,
+    imports: [NgxSpinnerModule, NavComponent, RouterOutlet]
 })
 export class AppComponent implements OnInit {
   title = 'The Dating App';

@@ -3,11 +3,14 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { RolesModalComponent } from 'src/app/modals/roles-modal/roles-modal.component';
 import { User } from 'src/app/_models/user';
 import { AdminService } from 'src/app/_services/admin.service';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-user-management',
-  templateUrl: './user-management.component.html',
-  styleUrls: ['./user-management.component.css']
+    selector: 'app-user-management',
+    templateUrl: './user-management.component.html',
+    styleUrls: ['./user-management.component.css'],
+    standalone: true,
+    imports: [NgFor]
 })
 export class UserManagementComponent implements OnInit {
   users: Partial<User[]>;

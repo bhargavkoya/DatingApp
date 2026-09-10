@@ -7,13 +7,16 @@ import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
 import { environment } from 'src/environments/environment';
+import { NgFor, NgIf, NgClass, NgStyle } from '@angular/common';
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
 @Component({
-  selector: 'app-photo-editor',
-  templateUrl: './photo-editor.component.html',
-  styleUrls: ['./photo-editor.component.css']
+    selector: 'app-photo-editor',
+    templateUrl: './photo-editor.component.html',
+    styleUrls: ['./photo-editor.component.css'],
+    standalone: true,
+    imports: [NgFor, NgIf, NgClass, NgStyle]
 })
 export class PhotoEditorComponent implements OnInit {
 
