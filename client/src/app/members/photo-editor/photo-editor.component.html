@@ -1,67 +1,66 @@
 <div class="row">
-    <div class="col-2 img-wrapper" *ngFor="let photo of member.photos">
-        <img src="{{photo.url}}" alt="{{photo.url}}" class="img-thumbnail p-1"
+  @for (photo of member.photos; track photo) {
+    <div class="col-2 img-wrapper">
+      <img src="{{photo.url}}" alt="{{photo.url}}" class="img-thumbnail p-1"
         [class.not-approved]="!photo.isApproved">
-        <div class="text-center img-text" *ngIf="!photo.isApproved">
+        @if (!photo.isApproved) {
+          <div class="text-center img-text">
             <span class="text-danger">Awaiting approval</span>
-        </div>
-
-
+          </div>
+        }
         <div class="text-center">
-            <button class="btn btn-sm"
+          <button class="btn btn-sm"
             [disabled]="photo.isMain || !photo.isApproved"
             (click)="setMainPhoto(photo)"
             [ngClass]='photo.isMain ? "btn-success active" : "btn-outline-success"'
-
-            >Main</button>
-            <button
-                [disabled]="photo.isMain"
-                (click)="deletePhoto(photo.id)"
-
-                class="btn btn-sm btn-danger">
-                <i class="fa fa-trash"></i>
-            </button>
+          >Main</button>
+          <button
+            [disabled]="photo.isMain"
+            (click)="deletePhoto(photo.id)"
+            class="btn btn-sm btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
         </div>
-    </div>
-</div>
+      </div>
+    }
+  </div>
 
-<div class="row mt-3">
+  <div class="row mt-3">
 
     <div class="col-md-3">
 
-        <h3>Add Photos</h3>
+      <h3>Add Photos</h3>
 
-        <div (dragover)="$event.preventDefault(); fileOverBase(true)"
-             (dragleave)="fileOverBase(false)"
-             (drop)="onDrop($event)"
-             [ngClass]="{'nv-file-over': hasBaseDropzoneOver}"
-             class="card bg-faded p-3 text-center mb-3 my-drop-zone">
-             <i class="fa fa-upload fa-3x"></i>
-            Drop Photo Here
-        </div>
+      <div (dragover)="$event.preventDefault(); fileOverBase(true)"
+        (dragleave)="fileOverBase(false)"
+        (drop)="onDrop($event)"
+        [ngClass]="{'nv-file-over': hasBaseDropzoneOver}"
+        class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+        <i class="fa fa-upload fa-3x"></i>
+        Drop Photo Here
+      </div>
 
 
-        Multiple
-        <input type="file" accept="image/*" (change)="onFileSelected($event)" multiple  /><br/>
+      Multiple
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" multiple  /><br/>
 
-        Single
-        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+      Single
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" />
     </div>
 
-    <div class="col-md-9" style="margin-bottom: 40px" *ngIf="uploading">
-
+    @if (uploading) {
+      <div class="col-md-9" style="margin-bottom: 40px">
         <h3>Uploading…</h3>
-
         <div>
-            <div>
-                Upload progress:
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar"
-                        [ngStyle]="{ 'width': uploadProgress + '%' }">{{ uploadProgress }}%</div>
-                </div>
+          <div>
+            Upload progress:
+            <div class="progress">
+              <div class="progress-bar" role="progressbar"
+              [ngStyle]="{ 'width': uploadProgress + '%' }">{{ uploadProgress }}%</div>
             </div>
+          </div>
         </div>
+      </div>
+    }
 
-    </div>
-
-</div>
+  </div>

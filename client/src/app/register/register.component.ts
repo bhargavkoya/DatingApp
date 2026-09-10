@@ -1,13 +1,18 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AbstractControl, UntypedFormBuilder, FormControl, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, FormControl, UntypedFormGroup, ValidatorFn, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
+import { JsonPipe } from '@angular/common';
+import { DateInputComponent } from '../_forms/date-input/date-input.component';
+import { TextInputComponent } from '../_forms/text-input/text-input.component';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, TextInputComponent, DateInputComponent, JsonPipe]
 })
 export class RegisterComponent implements OnInit {
   

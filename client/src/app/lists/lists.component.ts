@@ -2,11 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Member } from '../_models/member';
 import { Pagination } from '../_models/pagination';
 import { MembersService } from '../_services/members.service';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { MemberCardComponent } from '../members/member-card/member-card.component';
+
+import { FormsModule } from '@angular/forms';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 @Component({
-  selector: 'app-lists',
-  templateUrl: './lists.component.html',
-  styleUrls: ['./lists.component.css']
+    selector: 'app-lists',
+    templateUrl: './lists.component.html',
+    styleUrls: ['./lists.component.css'],
+    standalone: true,
+    imports: [ButtonsModule, FormsModule, MemberCardComponent, PaginationModule]
 })
 export class ListsComponent implements OnInit {
  

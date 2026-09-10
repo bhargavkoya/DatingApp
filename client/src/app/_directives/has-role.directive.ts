@@ -4,7 +4,8 @@ import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
 
 @Directive({
-  selector: '[appHasRole]'
+    selector: '[appHasRole]',
+    standalone: true
 })
 export class HasRoleDirective implements OnInit {
 

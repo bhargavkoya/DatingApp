@@ -4,10 +4,13 @@ import { RolesModalComponent } from 'src/app/modals/roles-modal/roles-modal.comp
 import { User } from 'src/app/_models/user';
 import { AdminService } from 'src/app/_services/admin.service';
 
+
 @Component({
-  selector: 'app-user-management',
-  templateUrl: './user-management.component.html',
-  styleUrls: ['./user-management.component.css']
+    selector: 'app-user-management',
+    templateUrl: './user-management.component.html',
+    styleUrls: ['./user-management.component.css'],
+    standalone: true,
+    imports: []
 })
 export class UserManagementComponent implements OnInit {
   users: Partial<User[]>;
