@@ -11,7 +11,6 @@ import { TextInputComponent } from '../_forms/text-input/text-input.component';
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css'],
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, TextInputComponent, DateInputComponent, JsonPipe]
 })
 export class RegisterComponent implements OnInit {

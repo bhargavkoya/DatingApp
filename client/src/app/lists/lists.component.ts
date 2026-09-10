@@ -12,7 +12,6 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     selector: 'app-lists',
     templateUrl: './lists.component.html',
     styleUrls: ['./lists.component.css'],
-    standalone: true,
     imports: [ButtonsModule, FormsModule, MemberCardComponent, PaginationModule]
 })
 export class ListsComponent implements OnInit {

@@ -10,7 +10,6 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-member-messages',
     templateUrl: './member-messages.component.html',
     styleUrls: ['./member-messages.component.css'],
-    standalone: true,
     imports: [FormsModule, AsyncPipe, TimeagoPipe]
 })
 export class MemberMessagesComponent implements OnInit {

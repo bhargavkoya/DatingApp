@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-roles-modal',
     templateUrl: './roles-modal.component.html',
     styleUrls: ['./roles-modal.component.css'],
-    standalone: true,
     imports: [FormsModule]
 })
 export class RolesModalComponent implements OnInit {

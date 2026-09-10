@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
     selector: 'app-test-errors',
     templateUrl: './test-errors.component.html',
     styleUrls: ['./test-errors.component.css'],
-    standalone: true,
     imports: []
 })
 export class TestErrorsComponent implements OnInit {

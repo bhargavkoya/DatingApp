@@ -6,7 +6,6 @@ import { ControlValueAccessor, NgControl, FormControl, FormsModule, ReactiveForm
     selector: 'app-text-input',
     templateUrl: './text-input.component.html',
     styleUrls: ['./text-input.component.css'],
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule]
 })
 export class TextInputComponent implements ControlValueAccessor {

@@ -15,7 +15,6 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024;
     selector: 'app-photo-editor',
     templateUrl: './photo-editor.component.html',
     styleUrls: ['./photo-editor.component.css'],
-    standalone: true,
     imports: [NgClass, NgStyle]
 })
 export class PhotoEditorComponent implements OnInit {

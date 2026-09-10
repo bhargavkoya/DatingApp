@@ -16,7 +16,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-member-list',
     templateUrl: './member-list.component.html',
     styleUrls: ['./member-list.component.css'],
-    standalone: true,
     imports: [FormsModule, ButtonsModule, MemberCardComponent, PaginationModule]
 })
 export class MemberListComponent implements OnInit {

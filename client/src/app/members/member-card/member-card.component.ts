@@ -10,7 +10,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-member-card',
     templateUrl: './member-card.component.html',
     styleUrls: ['./member-card.component.css'],
-    standalone: true,
     imports: [RouterLink, AsyncPipe]
 })
 export class MemberCardComponent implements OnInit {
