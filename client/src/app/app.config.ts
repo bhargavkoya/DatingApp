@@ -15,10 +15,11 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 
-// Replaces AppModule + AppRoutingModule + _modules/shared.module.ts. The ngx-*
-// .forRoot() calls are the ones SharedModule used to make; the class HTTP
-// interceptors are kept via withInterceptorsFromDi() + the HTTP_INTERCEPTORS
-// multi-providers (unchanged wiring).
+// Replaces AppModule + AppRoutingModule + _modules/shared.module.ts. The class
+// HTTP interceptors are kept via withInterceptorsFromDi() + the HTTP_INTERCEPTORS
+// multi-providers (unchanged wiring). ngx-bootstrap 21 dropped `.forRoot()` on
+// every module (they're standalone now, configs are providedIn: 'root'); only
+// ngx-toastr still uses forRoot.
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
@@ -28,13 +29,13 @@ export const appConfig: ApplicationConfig = {
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     importProvidersFrom(
-      BsDropdownModule.forRoot(),
+      BsDropdownModule,
       ToastrModule.forRoot({ positionClass: 'toast-bottom-right' }),
-      TabsModule.forRoot(),
-      BsDatepickerModule.forRoot(),
-      PaginationModule.forRoot(),
-      ButtonsModule.forRoot(),
-      ModalModule.forRoot()
+      TabsModule,
+      BsDatepickerModule,
+      PaginationModule,
+      ButtonsModule,
+      ModalModule
     )
   ]
 };
