@@ -30,10 +30,11 @@ token: Expires = DateTime.Now.AddDays(7);  handler = JwtSecurityTokenHandler
   `"role"` as a **string if one role, array if many**.
 - `nameid` → `User.GetUserId()`; `unique_name` → `User.GetUsername()`
   (`ClaimsPrincipleExtensions`).
-- ⚠️ **`TokenKey` is `"super secret unguessable key"` (28 bytes).** `HmacSha512` needs ≥ 64
-  bytes under `Microsoft.IdentityModel` v7+. Works on the current v6.x; **will throw
-  `IDX10653` after the .NET 10 upgrade** — see `MIGRATION_PLAN.md` §G1 (must set a 64+ char
-  key).
+- **`TokenKey`** must be ≥ 64 bytes (`HmacSha512` under `Microsoft.IdentityModel` v8; a
+  shorter key throws `IDX10653`). Since stage 1 it is supplied via **.NET user-secrets** in
+  Development (`<UserSecretsId>` in `API.csproj`) and via env var / real config elsewhere —
+  it is **not** stored in any committed file. (Pre-stage-1 it was a 28-char placeholder in
+  `appsettings.Development.json`.)
 
 ## JWT validation — `Extensions/IdentityServiceExtensions.cs`
 
@@ -109,8 +110,8 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 | Area | Issue |
 |---|---|
-| `TokenKey` | short, low-entropy, committed in `appsettings.Development.json`; same key dev/prod if not overridden |
-| Cloudinary secret | real-looking value committed in `appsettings.json`-adjacent `appsettings.Development.json` |
+| `TokenKey` | now in user-secrets / env (stage 1); ensure prod sets its own value, distinct from dev |
+| Cloudinary secret | lives in `API/appsettings.json`, which is **git-ignored** (not in the repo); still a plaintext-on-disk secret locally |
 | JWT | no issuer/audience validation; no refresh; 7-day lifetime; client never checks expiry |
 | `AuthGuard` | returns `undefined` instead of `false`/`UrlTree` on failure |
 | `MessagesController.DeleteMessage` | `GetMessage(id)` can return null → `message.Sender.UserName` would NPE if `id` doesn't exist (no null check) |
