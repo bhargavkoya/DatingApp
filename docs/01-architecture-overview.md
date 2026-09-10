@@ -70,7 +70,7 @@ Two independently-built apps in one repo:
 | Setting | Where (dev) | Where (prod) | Notes |
 |---|---|---|---|
 | DB connection | `API/appsettings.Development.json` → `ConnectionStrings:DefaultConnection` | `DATABASE_URL` env var, parsed in `ApplicationServiceExtensions` | dev/prod branch keyed off `ASPNETCORE_ENVIRONMENT` read directly |
-| `TokenKey` (JWT signing) | `API/appsettings.Development.json` | env / config | currently `"super secret unguessable key"` — too short for modern `Microsoft.IdentityModel` (see `05-auth-and-security.md`) |
+| `TokenKey` (JWT signing) | **.NET user-secrets** (`dotnet user-secrets set "TokenKey" …`); `<UserSecretsId>` in `API.csproj` | env var / real config | never committed; must be ≥ 64 bytes for HMAC-SHA512 (see `05-auth-and-security.md`) |
 | `CloudinarySettings` (CloudName/ApiKey/ApiSecret) | `API/appsettings.json` | env / config | bound via `IOptions<CloudinarySettings>` |
 | SPA API/hub URLs | `client/src/environments/environment.ts` / `environment.prod.ts` | build-time `fileReplacements` | |
 
@@ -91,12 +91,21 @@ was removed in Nov 2022; revisit hosting post-migration.
 # 1. Postgres (matches appsettings.Development.json)
 docker compose up -d db          # ../docker-compose.yml
 
-# 2. API  -> https://localhost:5001  (auto-migrates + seeds)
-cd API && dotnet run
+# 2. One-time: put the JWT signing key in user-secrets (NEVER committed).
+#    Any random string >= 64 bytes; HMAC-SHA512 requires it.
+cd API
+dotnet user-secrets set "TokenKey" "$(openssl rand -base64 64)"
 
-# 3. SPA  -> http://localhost:4200
-cd client && npm install && npm start
+# 3. API  -> https://localhost:5001  (auto-migrates + seeds)
+dotnet run
+
+# 4. SPA  -> http://localhost:4200
+cd ../client && npm install && npm start
 ```
+
+`TokenKey` is read from .NET user-secrets in Development (see
+`05-auth-and-security.md`); it is deliberately **not** in `appsettings.Development.json`.
+Non-Development reads `TokenKey` from an environment variable / real config.
 
 Seed accounts (all password `Pa$$w0rd`): the users in `API/Data/UserSeedData.json`
 (`lisa`, `karen`, …, lower-cased) all get the `Member` role; `admin` gets `Admin` +
