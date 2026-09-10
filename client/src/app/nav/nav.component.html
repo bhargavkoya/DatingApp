@@ -29,7 +29,7 @@
         </ul>
         <div class="dropdown" *ngIf="(accountService.currentUser$| async) as user" dropdown>
           <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
-          <a class="dropdown-toggle text-light ml-2" dropdownToggle>Welcome {{user.knownAs || user.username | titlecase}}</a>
+          <a class="dropdown-toggle text-light ms-2" dropdownToggle>Welcome {{user.knownAs || user.username | titlecase}}</a>
 
           <div class="dropdown-menu"*dropdownMenu>
             <a routerLink='member/edit' class="dropdown-item">Edit profile</a>
@@ -37,9 +37,9 @@
             <a  class="dropdown-item" (click)="logout()">Logout</a>
           </div>
         </div>
-        <form *ngIf="(accountService.currentUser$| async)===null" #loginForm="ngForm"class="form-inline mt-2 mt-md-0" (ngSubmit)="login()">
-          <input name="username" [(ngModel)]="model.username" class=" mr-sm-2" type="text"  placeholder="Username" required>||
-          <input name="password" [(ngModel)]="model.password" class="mr-sm-2" type="password"  placeholder="Password" required>||
+        <form *ngIf="(accountService.currentUser$| async)===null" #loginForm="ngForm"class="d-flex flex-wrap align-items-center gap-2 mt-2 mt-md-0" (ngSubmit)="login()">
+          <input name="username" [(ngModel)]="model.username" class=" me-sm-2" type="text"  placeholder="Username" required>||
+          <input name="password" [(ngModel)]="model.password" class="me-sm-2" type="password"  placeholder="Password" required>||
           <button class="btn btn-success my-2 my-sm-0" type="submit" [disabled]="loginForm.invalid">Login</button>
         </form>
       </div>
